@@ -1,0 +1,61 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Fascinate+Inline&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+#page-wrap {
+  width: 1000px;
+  height: 1205px;
+  padding-top: 30px;
+ padding-left: 200px;
+  margin-left: 280px;
+  align-content: center;
+  justify-content: center;
+  border: double #56fa87 21px;
+  border-radius: 3%;
+  background-color: rgba(131, 0, 253, 0.315);
+  opacity: 79%;
+}
+
+h1 {
+
+  font-family: 'Fascinate Inline', cursive;
+  color: rgb(49, 44, 82);
+  font-size: 100px;
+  opacity: 100%;
+}
+
+
+#img {
+  width: 500px;
+ 
+}
+
+head, body, footer {
+  
+ background-image: url('/src/components/assets/cityscape.jpg');
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ -o-background-size: cover;
+ background-size: cover;
+
+
+}
+
+#alert {
+   box-shadow: 20px 15px 15px 15px 15px rgb(225, 191, 238);
+background-image: url('/src/components/assets/4.gif');
+background-size: contain;
+background-repeat: no-repeat;
+width: 1340px;
+height: 450px;
+background-color: rgb(7, 32, 32);
+position: absolute;
+left: 325px;
+top: 250px;
+color: palevioletred;
+padding-right: 20px;
+padding-top: 100px;
+text-align: center;
+
+}
+
