@@ -7,7 +7,7 @@
   height: 1205px;
   padding-top: 30px;
  padding-left: 200px;
-  margin-left: 490px;
+  margin-left: 280px;
   align-content: center;
   justify-content: center;
   border: double #56fa87 21px;
@@ -30,7 +30,7 @@ h1 {
  
 }
 
-#wrapper {
+head, body, footer {
   
  background-image: url('/src/components/assets/cityscape.jpg');
  -webkit-background-size: cover;

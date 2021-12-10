@@ -5,6 +5,9 @@ import Search from './components/Search'
 import Location from './components/Location'
 import Header from './components/Header'
 import Error from './components/Error'
+import Weather from './components/Weather/Weather.js'
+import Container from 'react-bootstrap/Container';
+
 
 // import Error from './components/Error'
 class App extends React.Component {
@@ -14,28 +17,32 @@ class App extends React.Component {
     this.state = {
       errors: [],
       searchCompleted: false,
-      cityInput: '',
-      cityData: {},
+      searchQuery: '',
+      location: {},
       cityName: '',
       latitude: '',
       longitude: '',
-    }
+      weatherData: {},
+     forecast: [],
+     movies: [],
+    
+    };
   }
   showSearch = () => {
     this.setState({ searchCompleted: false });
   }
 
-    handleSearch = async (cityInput) => {
+    handleSearch = async (searchQuery) => {
       try {
-        let res = await axios.get(`http://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_CITY_API_KEY}&q=city:${[cityInput]}&format=json`);
+        let res = await axios.get(`http://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_CITY_API_KEY}&q=city:${[searchQuery]}&format=json`);
         // console.log(res.data[0])
         console.log('display name', res.data[0].display_name);
         console.log('latitude', res.data[0].lat);
         console.log('longitude', res.data[0].lon);
         this.setState({
           searchCompleted: true,
-          cityInput: cityInput,
-          cityData: res.data[0],
+          searchQuery: searchQuery,
+          location: res.data[0],
           cityName: res.data[0].display_name,
           latitude: res.data[0].lat,
           longitude: res.data[0].lon,
@@ -47,15 +54,64 @@ class App extends React.Component {
         searchCompleted: false,
         });
       }
+    
+this.fetchWeather();
+this.fetchMovies();
+    }
+  fetchWeather = async () => {
+    
+    try {
+      
+      const dailyForecast = await axios.get("http://172.28.128.67:3002/weather",
+      {
+        params: {
+        
+          lat: this.state.latitude,
+          lon: this.state.longitude,
+        }
+
+        
+      });
+    
+      this.setState({
+        
+    // forecast: forecast,
+  weatherData: dailyForecast,
+   forecast: dailyForecast.data.data,
 
 
+      });
+    
+    } catch (err) {
+      this.setState({
+        errors: `${err}`,
+        searchCompleted: false,
+        });
+      }
+    }
+fetchMovies = async () => {
+  try {
+    const movieInfo = await axios.get("http://172.28.128.67:3002/movies",
+    {
+      params: {
+        keyword: this.state.searchQuery
+      }
+    });
+    this.setState({
+      movies: movieInfo.data
+    });
+  } catch (err) {
+    this.setState({
+    errors: `${err}`,
+    searchCompleted: false,
+    })
+  }
+}
 
       // get weather api handler
       // weatherData = res.data.data[0]
       
       // `https://api.weatherbit.io/v2.0/current?key=${REACT_APP_WEATHER_API_KEY}&units=I&lat=${res.data[0].lat}&lon={res.data[0].lon}`
-    }    
-      
 
     render() {
       
@@ -66,16 +122,19 @@ class App extends React.Component {
           <Header />  
           {
             this.state.searchCompleted && this.state.errors.length === 0 ?
-          <Location handleShowSearch={this.showSearch} cityData={this.state.cityData} /> :
+          <Location handleShowSearch={this.showSearch} location={this.state.location} /> :
           this.state.errors.length !== 0 ?
           <Error handleSearch={this.handleSearch} errors={this.state.errors} error={this.state.error} />  :
 
     
-          <Search handleSearch={this.handleSearch} cityData={this.state.cityData}/> 
+          <Search handleSearch={this.handleSearch} location={this.state.location} /> 
       
           }
-         
-           
+         <Container>
+          <Weather handleShowSearch={this.showSearch} forecast={this.state.forecast} weatherData={this.state.weatherData}/>
+          </Container>
+           <Container>
+           </Container>
           </div>
        </div>
       )

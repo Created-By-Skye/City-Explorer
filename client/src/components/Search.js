@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './App.css'
 class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -27,15 +27,15 @@ class Search extends React.Component {
         <br />
         <br />
         <br />
-        <label id="label" style={{position: 'absolute', top: '210px', left: '638px' , marginBottom: '5px', fontSize: '40px'}}><p>Enter a city to begin!</p></label><br />
+        <label id="label"><p>Enter a city to begin!</p></label><br />
           <input
-          style={{width: '580px', height: '60px', position: 'absolute', top: '368px', left: '627px'}}
+         id="search-bar"
           type="text"
          placeholder="Where would you like to explore?"
          ref={this.state.textInput}
          />
    
-        <input type="submit" value="Explore!" style={{height:'60px', width: '120px', position: 'absolute', top: '368px', left: '1213px'}}/>
+        <input type="submit" value="Explore!" id="search-button"/>
     
       </form>
       </div>

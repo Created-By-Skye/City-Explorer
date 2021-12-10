@@ -5,7 +5,7 @@
 #header {
 
     position: absolute; 
-    left: 725px;
+    left: 525px;
     top: 228px;
     padding-bottom: 20px;
     font-size: 20px;
@@ -20,7 +20,7 @@ text-shadow: 0 0 5px rgb(0, 58, 216), 0 0 10px rgb(0, 10, 102), 0 0 5px #b3f6ff,
 
 #pixelmoon {
   position: absolute;
-  left: 935px;
+  left: 710px;
 }
 
 /* 
@@ -36,7 +36,7 @@ text-shadow: 0 0 5px rgb(0, 58, 216), 0 0 10px rgb(0, 10, 102), 0 0 5px #b3f6ff,
 
 #heading2 {
   color: rgb(248, 153, 169);
-    margin-left: 320px;
+    margin-left: -10px;
     margin-top: -10px;
     font-size: 75px;
     font-family: 'Gemunu Libre', sans-serif;
@@ -45,7 +45,7 @@ text-shadow: 0 0 5px rgb(0, 58, 216), 0 0 10px rgb(0, 10, 102), 0 0 5px #b3f6ff,
   #p {
      color: rgb(255, 124, 146);
       margin-top: 35px;
-      margin-left: 320px;
+      margin-left: 20px;
       font-size: 45px;
       font-family: 'Gemunu Libre', sans-serif;
       
@@ -110,6 +110,60 @@ text-shadow: 0 0 5px rgb(0, 58, 216), 0 0 10px rgb(0, 10, 102), 0 0 5px #b3f6ff,
 
   #location {
     position: absolute;
-    left: 640px;
+    left: 440px;
     top: 290px;
   }
+
+
+  #search-bar {
+    position: absolute;
+    left: 450px;
+    top: 300px;
+    width: 500px;
+    height: 60px;
+
+  }
+
+  #search-button {
+    position: absolute; 
+    left: 950px;
+    top: 300px;
+    width: 150px;
+    height: 60px;
+
+  }
+
+  #label {
+    position: absolute;
+    top: 210px;
+    left: 598px;
+    margin-bottom: 5px;
+    font-size: 40px;
+  }
+
+ .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+ }
+
+.child {
+  position: relative;
+  left: 477px;
+  bottom: 10px;
+  margin: 5px 5px 5px 5px;
+ background-color:rgb(19, 0, 65);
+}
+
+#forecast-title {
+  background-color: white;
+  z-index: 1000;
+  border: double blue 10px;
+  width: 400px;
+  position: relative;
+  top: -10px;
+  left: 490px;
+  height: 200px;
+  text-align: center;
+}
